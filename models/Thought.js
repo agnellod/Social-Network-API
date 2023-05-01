@@ -1,7 +1,7 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs');
 
-const ThoughtSchema = new Schema(
+const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
@@ -19,7 +19,7 @@ const ThoughtSchema = new Schema(
             required: true,
 
         },
-        reactions: [ReactionSchema],
+        reactions: [reactionSchema],
     },
     {
         toJSON: {
@@ -30,7 +30,7 @@ const ThoughtSchema = new Schema(
     }
 );
 
-const ReactionSchema = new Schema(
+const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
@@ -57,13 +57,13 @@ const ReactionSchema = new Schema(
         }
     }
 )
-ThoughtSchema
+thoughtSchema
     .virtual('reactionCount')
     // Getter
     .get(function () {
         return this.reactions.length;
     });
 
-const Thought = model('Thought', ThoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
