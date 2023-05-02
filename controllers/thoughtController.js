@@ -39,6 +39,7 @@ module.exports = {
             if (!thought) {
                 res.status(404).json({ message: 'No thought with that ID' });
             }
+            res.json({ message: 'Thought successfully deleted' });
         } catch (err) {
             res.status(500).json(err);
         }
@@ -62,7 +63,7 @@ module.exports = {
     },
     async createReaction(req, res) {
         try {
-            const reaction = Thought.findOneAndUpdate(
+            const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $addToSet: { reactions: req.body } },
                 { runValidators: true, new: true }
@@ -78,7 +79,7 @@ module.exports = {
     },
     async deleteReaction(req, res) {
         try {
-            const reaction = Thought.findOneAndUpdate(
+            const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true }
