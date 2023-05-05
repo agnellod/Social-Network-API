@@ -28,8 +28,8 @@ To create a social network user where you leave thoughts and create and add frie
 MIT
 
 ## Screen Shot
+[Untitled_ May 2, 2023 6_49 AM.webm](https://user-images.githubusercontent.com/119445300/236354981-4414f45d-ccde-42b0-abdb-b17f5a18d215.webm)
 
-NA
 
 ## Tests
 
